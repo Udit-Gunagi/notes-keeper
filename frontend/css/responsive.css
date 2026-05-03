@@ -1,0 +1,121 @@
+/* tablet and smaller - sidebar becomes a drawer */
+@media (max-width: 768px) {
+
+  /* auth page stacks vertically on mobile */
+  .auth-container {
+    flex-direction: column;
+  }
+
+  .auth-left {
+    padding: 32px 24px 40px;
+    min-height: auto;
+  }
+
+  .auth-headline {
+    font-size: 2rem;
+  }
+
+  .auth-decoration {
+    display: none; /* skip the floating cards on small screens */
+  }
+
+  .auth-brand { margin-bottom: 28px; }
+  .auth-sub { margin-bottom: 0; }
+
+  .auth-right {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+  }
+
+  /* sidebar slides in from the left as a drawer */
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transform: translateX(-100%);
+    z-index: 200;
+    width: 80%;
+    max-width: 280px;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .sidebar-close { display: flex; }
+
+  .menu-btn { display: flex; }
+
+  /* main content takes full width */
+  .main-content { width: 100%; }
+
+  /* top bar new note button */
+  .new-note-top-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .new-note-top-btn svg { width: 18px; height: 18px; }
+
+  /* notes grid on mobile - single column */
+  .notes-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .content-area { padding: 16px; }
+
+  /* move fab up so it doesn't overlap content */
+  .fab {
+    bottom: 24px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+  }
+
+  /* modal full-screen on mobile */
+  .note-modal {
+    max-height: 95vh;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .modal-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  /* toast at the top on mobile */
+  .toast-container {
+    bottom: auto;
+    top: 16px;
+  }
+}
+
+/* super small phones */
+@media (max-width: 360px) {
+  .auth-left { padding: 24px 20px; }
+  .auth-right { padding: 24px 20px; }
+  .auth-tabs { flex-direction: column; }
+}
+
+/* desktop - make sure actions are always accessible on touch-only screens */
+@media (hover: none) {
+  .note-card-actions { opacity: 1; }
+}
