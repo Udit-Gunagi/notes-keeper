@@ -137,6 +137,9 @@ const Auth = (() => {
 
     document.getElementById('logout-btn').addEventListener('click', () => {
       clearSession();
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.height = '';
       App.showAuth();
       UI.showToast('You\'ve been signed out', 'info');
     });

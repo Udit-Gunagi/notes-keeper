@@ -46,6 +46,8 @@ const UI = (() => {
     document.getElementById('sidebar').classList.remove('open');
     document.getElementById('sidebar-overlay').classList.add('hidden');
     document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.height = '';
   };
 
   // fill in the user info in the sidebar header

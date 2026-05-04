@@ -1,23 +1,35 @@
 # ✦ NotesKeeper
 
-A lightweight, mobile-first note-taking app with a clean dark UI. Built with Node.js, Express, and PostgreSQL on the backend, and plain HTML/CSS/JS on the frontend — no framework overhead, just fast and functional.
+A mobile-first, full-stack note-taking app with a clean dark UI. Write freely, organize effortlessly, and find anything instantly.
+
+## 🌐 Live Demo
+
+👉 [View Live Project](https://notes-keeper-92n6.onrender.com)
+
+> ⚠️ **Note:** The backend is hosted on Render's free tier. If the site hasn't been visited in a while, it may take **10–20 seconds** to wake up on the first load. 
 
 ---
 
-## Features
+## 📸 Preview
 
-- **User Authentication** — Register and log in with JWT-based sessions (7-day expiry)
-- **Create Notes** — Add a title, write content, and pick a card color
-- **Edit Notes** — Tap any note to edit it in-place
-- **Delete Notes** — Permanently remove notes with a confirm dialog
-- **Pin Notes** — Keep important notes at the top of your list
-- **Search** — Filter notes by title or content in real time
-- **Responsive Design** — Works great on mobile, tablet, and desktop
-- **Persistent Storage** — All data stored in PostgreSQL on Render
+> _Login, create notes, pin them, search — all from your phone or desktop._
 
 ---
 
-## Tech Stack
+## ✨ Features
+
+- 🔐 **User Authentication** — Register and log in with JWT-based sessions
+- 📝 **Create Notes** — Add a title, write content, and pick a card color
+- ✏️ **Edit Notes** — Tap any note to update it instantly
+- 🗑️ **Delete Notes** — Remove notes with a confirm dialog
+- 📌 **Pin Notes** — Keep important notes at the top
+- 🔍 **Search** — Filter notes by title or content in real time
+- 📱 **Fully Responsive** — Works great on mobile, tablet, and desktop
+- 🎨 **Unique Dark UI** — Deep space theme with warm amber accents
+
+---
+
+## 🛠️ Tech Stack
 
 | Layer | Tech |
 |-------|------|
@@ -30,7 +42,7 @@ A lightweight, mobile-first note-taking app with a clean dark UI. Built with Nod
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
 ```
 noteskeeper/
@@ -49,7 +61,7 @@ noteskeeper/
 └── frontend/
     ├── css/
     │   ├── reset.css          # Browser normalization
-    │   ├── variables.css      # Design tokens
+    │   ├── variables.css      # Design tokens & colors
     │   ├── layout.css         # Page & sidebar structure
     │   ├── components.css     # Cards, modals, forms, buttons
     │   ├── animations.css     # Keyframe animations
@@ -59,13 +71,13 @@ noteskeeper/
     │   ├── auth.js            # Login, register, logout logic
     │   ├── notes.js           # Note CRUD + rendering
     │   ├── ui.js              # Toasts, modals, sidebar
-    │   └── app.js             # App entry, session check
+    │   └── app.js             # App entry point, session check
     └── index.html             # Single HTML shell
 ```
 
 ---
 
-## Getting Started
+## 🚀 Getting Started (Local)
 
 ### Prerequisites
 
@@ -75,11 +87,11 @@ noteskeeper/
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/yourusername/noteskeeper.git
+git clone https://github.com/Udit-Gunagi/noteskeeper.git
 cd noteskeeper
 ```
 
-### 2. Install backend dependencies
+### 2. Install dependencies
 
 ```bash
 cd backend
@@ -88,10 +100,10 @@ npm install
 
 ### 3. Set up environment variables
 
-The `.env` file is already configured with the Render PostgreSQL connection string. If you need to change the database, update `DATABASE_URL` in `backend/.env`.
+Create a `.env` file inside the `backend/` folder:
 
 ```env
-DATABASE_URL=postgresql://...
+DATABASE_URL=your_postgresql_connection_string
 JWT_SECRET=your_secret_key_here
 PORT=3001
 NODE_ENV=production
@@ -100,21 +112,38 @@ NODE_ENV=production
 ### 4. Run the app
 
 ```bash
-# from the backend/ directory
-npm start
+node server.js
 ```
 
-The server starts on **http://localhost:3001** and serves the frontend statically from the `frontend/` folder.
-
-For development with auto-restart:
-
-```bash
-npm run dev
-```
+Open **http://localhost:3001** in your browser.
 
 ---
 
-## API Endpoints
+## 🌍 Deploying to Render
+
+1. Push the project to GitHub
+2. Go to [render.com](https://render.com) → New Web Service → Connect your repo
+3. Set these in the Render dashboard:
+
+| Setting | Value |
+|---------|-------|
+| Root Directory | `backend` |
+| Build Command | `npm install` |
+| Start Command | `node server.js` |
+
+4. Add environment variables in Render → Environment tab:
+
+| Key | Value |
+|-----|-------|
+| `DATABASE_URL` | your PostgreSQL URL |
+| `JWT_SECRET` | your secret key |
+| `NODE_ENV` | `production` |
+
+5. Click **Deploy** — the frontend is served automatically by Express, no separate hosting needed.
+
+---
+
+## 🔌 API Endpoints
 
 ### Auth
 
@@ -124,7 +153,7 @@ npm run dev
 | POST | `/api/auth/login` | Log in, receive JWT |
 | GET | `/api/auth/me` | Get current user (auth required) |
 
-### Notes (all require `Authorization: Bearer <token>`)
+### Notes _(all require `Authorization: Bearer <token>`)_
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -136,39 +165,28 @@ npm run dev
 
 ---
 
-## Database
+## 🗃️ Database
 
-Tables are created automatically on first run:
+Tables are created automatically on first server start using the `nk_` prefix to avoid conflicts with other projects on the same database:
 
-- **users** — id, username, email, password_hash, avatar_color, created_at
-- **notes** — id, user_id, title, content, color, pinned, created_at, updated_at
-
----
-
-## Deployment
-
-This app is designed to deploy easily on **Render**:
-
-1. Push the project to GitHub
-2. Create a new **Web Service** on Render
-3. Set the root directory to `backend/`
-4. Set the build command: `npm install`
-5. Set the start command: `npm start`
-6. Add your environment variables in the Render dashboard
-
-The frontend is served statically by Express — no separate hosting needed.
+- **nk_users** — id, username, email, password_hash, avatar_color, created_at
+- **nk_notes** — id, user_id, title, content, color, pinned, created_at, updated_at
 
 ---
 
-## Design Choices
+## 🎨 Design Highlights
 
-- **Dark amber theme** — Deep space background with warm amber accents, avoids the usual purple/blue AI-app look
-- **Syne + Plus Jakarta Sans** — Display font with personality, readable body font
-- **Mobile-first** — Sidebar becomes a slide-in drawer below 768px, modal becomes a bottom sheet
-- **No framework** — Keeps things fast and dependency-free on the frontend
+- Deep space dark background with warm **amber accents** — not the usual purple/blue AI-app look
+- **Syne** display font for headings, **Plus Jakarta Sans** for body text
+- Sidebar becomes a **slide-in drawer** on mobile
+- Note modal becomes a **bottom sheet** on small screens
+- Color-coded note cards with a built-in color picker
+- Real-time **debounced search** so it doesn't spam the API on every keystroke
 
 ---
 
-## License
+## 👤 Author
 
-MIT — do whatever you want with it.
+**Udit U Gunagi**
+- GitHub: [@Udit-Gunagi](https://github.com/Udit-Gunagi)
+
