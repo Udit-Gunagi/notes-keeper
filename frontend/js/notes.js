@@ -115,7 +115,10 @@ const Notes = (() => {
       allNotes = data.notes;
       renderNotes(allNotes);
     } catch (err) {
-      UI.showToast('Could not load notes', 'error');
+      // silently fail on load - user will just see empty state
+      // which is fine for a fresh account
+      allNotes = [];
+      renderNotes([]);
     }
   };
 

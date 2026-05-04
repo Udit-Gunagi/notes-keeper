@@ -45,13 +45,17 @@ const App = (() => {
     // check if user is already logged in
     if (Auth.isLoggedIn()) {
       try {
-        // verify the stored token is still valid with the server
         await API.auth.me();
         showDashboard();
-      } catch {
-        // token expired or invalid - kick them back to login
-        Auth.clearSession();
-        showAuth();
+      } catch (err) {
+        // if token is expired kick back to login
+        // if it's a network error, still try to show dashboard
+        if (err.message.includes('401') || err.message.includes('Invalid token') || err.message.includes('expired')) {
+          Auth.clearSession();
+          showAuth();
+        } else {
+          showDashboard();
+        }
       }
     } else {
       showAuth();
