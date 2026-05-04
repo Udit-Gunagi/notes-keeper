@@ -45,7 +45,7 @@ A mobile-first, full-stack note-taking app with a clean dark UI. Write freely, o
 ## 📁 Project Structure
 
 ```
-noteskeeper/
+notes-keeper/
 ├── backend/
 │   ├── config/
 │   │   └── db.js              # PostgreSQL pool + table init
