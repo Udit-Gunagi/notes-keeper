@@ -87,8 +87,8 @@ noteskeeper/
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/Udit-Gunagi/noteskeeper.git
-cd noteskeeper
+git clone https://github.com/Udit-Gunagi/notes-keeper.git
+cd notes-keeper
 ```
 
 ### 2. Install dependencies
