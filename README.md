@@ -4,9 +4,13 @@ A mobile-first, full-stack note-taking app with a clean dark UI. Write freely, o
 
 ## 🌐 Live Demo
 
+## 🌐 Live Demo
+
 👉 [View Live Project](https://notes-keeper-92n6.onrender.com)
 
-> ⚠️ **Note:** The backend is hosted on Render's free tier. If the site hasn't been visited in a while, it may take **10–20 seconds** to wake up on the first load. 
+> ⚠️ **Note:** The backend is hosted on Render's free tier. It may take **10–20 seconds** to wake up on the first load.
+
+> 🧪 **To test the project**, login using — **Email:** `testing-project@gmail.com` &nbsp;|&nbsp; **Password:** `testing-project` 
 
 ---
 
